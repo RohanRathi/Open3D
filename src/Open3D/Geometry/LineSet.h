@@ -56,44 +56,17 @@ public:
     ~LineSet() override {}
 
 public:
-    /// Clear all elements in the geometry.
     LineSet &Clear() override;
-    /// Returns `true` iff the geometry is empty.
     bool IsEmpty() const override;
-    /// Returns min bounds for geometry coordinates.
     Eigen::Vector3d GetMinBound() const override;
-    /// Returns min bounds for geometry coordinates.
     Eigen::Vector3d GetMaxBound() const override;
-    /// Returns the center of the geometry coordinates.
     Eigen::Vector3d GetCenter() const override;
-    /// Returns an axis-aligned bounding box of the geometry.
     AxisAlignedBoundingBox GetAxisAlignedBoundingBox() const override;
-    /// Returns an oriented bounding box of the geometry.
     OrientedBoundingBox GetOrientedBoundingBox() const override;
-    /// Apply transformation (4x4 matrix) to the geometry coordinates.
     LineSet &Transform(const Eigen::Matrix4d &transformation) override;
-    /// Apply translation to the geometry coordinates.
-    ///
-    /// \param translation - A 3D vector to transform the geometry.
-    /// \param relative - If `true`, the translation vector is directly added to
-    /// the geometry coordinates. Otherwise, the center is moved to the
-    /// translation vector.
     LineSet &Translate(const Eigen::Vector3d &translation,
                        bool relative = true) override;
-    /// Apply scaling to the geometry coordinates.
-    ///
-    /// \param scale -  The scale parameter that is multiplied to the
-    /// points/vertices of the geometry.
-    /// \param center - If `true`, then the scale is applied to the centered
-    /// geometry.
     LineSet &Scale(const double scale, bool center = true) override;
-    /// Apply rotation to the geometry coordinates and normals.
-    ///
-    /// \param R - A 3D vector that either defines the three angles for Euler
-    /// rotation, or in the axis-angle representation the normalized vector
-    /// defines the axis of rotation and the norm the angle around this axis.
-    /// \param center - If `true`, then the rotation is applied to the centered
-    /// geometry.
     LineSet &Rotate(const Eigen::Matrix3d &R, bool center = true) override;
 
     LineSet &operator+=(const LineSet &lineset);
