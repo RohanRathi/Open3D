@@ -55,11 +55,11 @@ public:
     KDTreeFlann();
     /// \brief Parameterized Constructor.
     ///
-    /// \param data - provides set of data points for KDTree construction.
+    /// \param data provides set of data points for KDTree construction.
     KDTreeFlann(const Eigen::MatrixXd &data);
     /// \brief Parameterized Constructor.
     ///
-    /// \param geometry - provides geometry from which KDTree is constructed.
+    /// \param geometry provides geometry from which KDTree is constructed.
     KDTreeFlann(const Geometry &geometry);
     KDTreeFlann(const registration::Feature &feature);
     ~KDTreeFlann();
